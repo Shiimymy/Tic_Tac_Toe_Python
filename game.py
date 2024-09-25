@@ -66,7 +66,7 @@ def choose_first():
     '''
     Randomly decide which player goes first
     '''
-    flip = random.randit(0,1)
+    flip = random.randrange(0,1)
     
     if flip == 0:
         return 'Player 1'
