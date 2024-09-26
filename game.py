@@ -2,7 +2,6 @@ import random
 
 print('Welcome to Tic Tac Toe!')
 
-
 def display_board(board):
     print('\n'*2) # Clear screen
     print(board[7]+'|'+board[8]+'|'+board[9])
@@ -23,7 +22,6 @@ def player_input():
         marker = input ('Player 1, choose X or O:').upper()
         
     player1 = marker
-    
     if player1 == 'X':
         player2 = 'O'
     else: 
@@ -114,7 +112,7 @@ def replay():
     return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
 
 
-# Code to run the gaem: 
+# Code to run the game: 
 
 while True:
     # Reset the board
@@ -135,7 +133,14 @@ while True:
             ### PLAYER ONE TURN
             
             display_board(the_board)
-            position = player_choice(the_board) # choose a position
+            # Add an handling error in case player choose a non digit
+            try:
+                position = player_choice(the_board) # choose a position
+            except:
+                print("Make sure to have an available number between 1 and 9")
+                print("The game has to restart")
+                player_input()
+
             place_marker(the_board, player1_marker, position) # place the marker
 
             # Check if won
