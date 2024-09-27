@@ -139,7 +139,7 @@ while True:
             except:
                 print("Make sure to have an available number between 1 and 9")
                 print("The game has to restart")
-                player_input()
+                break
 
             place_marker(the_board, player1_marker, position) # place the marker
 
@@ -163,7 +163,12 @@ while True:
             ### PLAYER TWO TURN
             
             display_board(the_board)
-            position = player_choice(the_board)
+            try:
+                position = player_choice(the_board) # choose a position
+            except:
+                print("Make sure to have an available number between 1 and 9")
+                print("The game has to restart")
+                break
             place_marker(the_board, player2_marker, position)
 
             if win_check(the_board, player2_marker):
